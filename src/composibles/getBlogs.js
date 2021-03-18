@@ -7,6 +7,9 @@ const getBlogs=()=>{
     
     const loadBlogs= async ()=>{
       try {
+        await new Promise(resolve=>{
+           setTimeout(resolve,1000)
+        })
         
         const res = await fetch('http://localhost:3000/blogs')
         if (!res.ok){

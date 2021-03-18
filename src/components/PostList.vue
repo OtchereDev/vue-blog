@@ -1,12 +1,13 @@
 <template>
-<div>
-
+<div >
+    
     <div v-for="blog in blogs" :key="blog.id">
         <SinglePost :blog='blog' />
 
         
     </div>
 </div>
+
 </template>
 
 <script>

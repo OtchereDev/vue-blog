@@ -4,19 +4,27 @@
       OtchereDev Blogs
     </h2>
     <div v-if="error">{{error}}</div>
-    <PostList :blogs='blogs' />
+    
+    <div v-if="blogs.length">
+      <PostList :blogs='blogs' />
+    </div>
+    <div v-else>
+      Loading...
+    </div>
+    <TagCloud/>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import PostList from '@/components/PostList.vue'
+import TagCloud from '@/components/TagCloud.vue'
 import getBlogs from '@/composibles/getBlogs'
 
 export default {
   name: 'Home',
   components: {
-   PostList
+   PostList,TagCloud
   },
   setup(){
     const {blogs,error,loadBlogs}=getBlogs()
