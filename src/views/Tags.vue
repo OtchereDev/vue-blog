@@ -34,8 +34,6 @@ export default {
 
         const tag=ref()
 
-        
-
         const{blogs,error,loadBlogs}=getBlogs()
 
         loadBlogs()

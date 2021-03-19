@@ -32,6 +32,7 @@
 <script>
 import { ref } from '@vue/reactivity'
 import {useRouter} from 'vue-router'
+import {projectFirebase} from '../firebase/config'
 export default {
   setup(){
     const title=ref('')
@@ -48,13 +49,18 @@ export default {
         tags:tags.value
       }
 
-      await fetch('http://localhost:3000/blogs',{
-        method:"POST",
-        headers:{
-          'Content-Type':'application/json'
-        },
-        body:JSON.stringify(post)
-      })
+
+      // using -firestore
+      const res=  await projectFirebase.collection('post').add(post)
+
+      // using json-server
+      // await fetch('http://localhost:3000/blogs',{
+      //   method:"POST",
+      //   headers:{
+      //     'Content-Type':'application/json'
+      //   },
+      //   body:JSON.stringify(post)
+      // })
       title.value=''
       detail.value=''
       tags.value=[]
